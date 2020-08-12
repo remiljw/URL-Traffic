@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'landingPageTester.apps.LandingpagetesterConfig',
+    # 'landingPageTester.apps.LandingpagetesterConfig',
     'landingPageTester',
 ]
 
