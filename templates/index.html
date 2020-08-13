@@ -6,7 +6,7 @@
 
         <div class="form-section col-md-8 mx-auto">
           <div class="card">
-            <form action="{% url 'add_page' %}" method="POST">
+            <form action="{% url 'check_url' %}" method="POST">
               {% csrf_token %}
               <div class="form-group">
                 <input
@@ -25,18 +25,18 @@
             </form>
           </div>
         </div>
-
+         {% if page %} 
         <div class="result-section mt-4 col-md-8 mx-auto">
-          <h5 class="text-secondary display-6">Saved URLs</h5>
+          <h5 class="text-secondary display-6">URL Data</h5>
           <div class="row">
-            {% if pages %} {% for page in pages %}
+           
             <div class="col-md-6">
               <div class="result card p-2">
                 <div class="card-header">
                   <p>{{ page.page_name }}: <a class="ml-2" href="{{ page.page_url }}">{{ page.page_url }}</a></p>
                 </div>
                 <div class="card-body">
-                  <p>Rank: {{ page.page_rank }}
+                  <p>Rank: {{ page.page_rank }} 
                   <p>Page Views per Million: {{ page.page_views_per_million }}</p>
                 </div>
 
@@ -55,7 +55,8 @@
                 </div>
               </div>
             </div>
-            {% endfor %} {% endif %}
+            {% comment %} {% endfor %} {% endcomment %}
+            {% endif %} 
             </div>
           </div>
         </div>

@@ -188,16 +188,17 @@ def add_page(request):
         r = requests.get(request_url, headers=headers)
         soup = BeautifulSoup(r.text, 'html.parser')
         status_code = soup.responsestatus.statuscode.get_text()
-        rank = soup.rank.get_text()
         result_url = soup.site.get_text()
         try:
             result_page_views_permillion = soup.pageviews.permillion.get_text()
             result_page_views_peruser = soup.pageviews.peruser.get_text()
             result_reach_permillion = soup.reach.permillion.get_text()
+            rank = soup.rank.get_text()
         except:
             result_page_views_permillion = "0.0"
             result_page_views_peruser="0.0"
             result_reach_permillion="0.0"
+            rank = "0" 
 
         finally:
             page_domain = tldextract.extract(result_url).domain
@@ -209,7 +210,9 @@ def add_page(request):
             if traffic_exists:
                 Page.objects.filter(page_url=result_url).delete()
             traffic.save()
-        return HttpResponseRedirect(reverse('index'))
+        context = { 'page' : traffic}
+        return render(request, 'index.html', context)
+        # return HttpResponseRedirect(reverse('index'))
 
 
 # def get_url(request,pk):
@@ -279,9 +282,9 @@ def add_page(request):
 def index(request):
     all_pages = Page.objects.all()
     context = {            
-        'pages': all_pages
+        # 'pages': all_pages
     }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 
 def manage(request, pk):
