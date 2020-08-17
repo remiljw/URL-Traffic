@@ -8,8 +8,9 @@ from configparser import ConfigParser
 from future.standard_library import install_aliases
 install_aliases()
 from urllib.parse import parse_qs, quote_plus
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.contrib import messages
+from django.template import RequestContext
 from django.http import Http404, JsonResponse, HttpResponseRedirect
 from django.core import serializers
 from django.conf import settings
@@ -214,6 +215,8 @@ def add_page(request):
         return render(request, 'index.html', context)
     else:
         return HttpResponseRedirect(reverse('index'))
+
+
 
 
 
