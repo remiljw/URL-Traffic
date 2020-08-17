@@ -212,7 +212,9 @@ def add_page(request):
             traffic.save()
         context = { 'page' : traffic}
         return render(request, 'index.html', context)
-        # return HttpResponseRedirect(reverse('index'))
+    else:
+        return HttpResponseRedirect(reverse('index'))
+
 
 
 # def get_url(request,pk):
