@@ -292,13 +292,13 @@ def index(request):
     return render(request, 'index.html')
 
 
-def manage(request, pk):
+def info(request, pk):
     page = Page.objects.get(id=pk)
     # speed = Speed.objects.get(id=pk)
     context = {            
         'page': page
     }
-    return render(request, 'manage.html', context)
+    return render(request, 'info.html', context)
   
 def add_speed(request):
     if request.method == 'POST':

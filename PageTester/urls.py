@@ -18,11 +18,10 @@ from django.urls import path, include
 from landingPageTester import views
 
 
-
-
-
 urlpatterns = [
     path('', views.index, name='index'),
     path('check_url/', views.add_page, name='check_url'),
+    path('info/<int:pk>/', views.info, name='manage'),
+
 ]
                                

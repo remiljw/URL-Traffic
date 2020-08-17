@@ -6,7 +6,7 @@
           <div class="result card p-2">
             <div class="card-header">
              <h4>{{ page.page_name }}</h4>
-              <a href="{{page.page_url}}">{{ page.page_url }}</a>
+              <a href="{{page.page_url}}" target="blank">{{ page.page_url }}</a>
                     {% comment %} <form action="/get_url/{{page.id}}/" method="post">{% csrf_token %}
                         <div class="text-right p-2">
                             <button type="submit" class="float-right btn btn-sm btn-info px-3">Edit</button>
